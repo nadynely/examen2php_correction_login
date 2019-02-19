@@ -1,3 +1,108 @@
+[2019-02-19 09:36:33] SELECT * FROM user WHERE `email` = 'dede@gmail.com'
+[2019-02-19 09:36:13] INSERT INTO user (`email`, `pseudo`, `password_hash`) VALUES ('dede@gmail.com', 'dede', 'y$OEtaPb0ANMbmUexWDQVJAuZw0NjlsydBcQ08yFL99M/wqbA3HOtgm') 
+[2019-02-19 09:36:13] SELECT * FROM user WHERE `email` = 'dede@gmail.com'
+[2019-02-18 16:39:33] SELECT * FROM user WHERE `email` = 'admin@gmail.com'
+[2019-02-18 16:34:07] SELECT * FROM user WHERE `email` = 'admin@gmail.com'
+[2019-02-18 16:33:00] SELECT * FROM user WHERE `email` = 'admin@gmail.com'
+[2019-02-18 16:32:42]     SELECT modele, prenom
+                    FROM conducteur
+
+                    LEFT JOIN association_vehicule_conducteur
+                        ON association_vehicule_conducteur.id_conducteur = conducteur.id_conducteur
+
+                    LEFT JOIN vehicule
+                        ON	vehicule.id_vehicule = association_vehicule_conducteur.id_vehicule
+                        
+                    UNION
+
+                    SELECT modele, prenom
+                    FROM vehicule
+
+                    LEFT JOIN association_vehicule_conducteur
+                        ON association_vehicule_conducteur.id_vehicule = vehicule.id_vehicule
+
+                    LEFT JOIN conducteur
+                        ON	conducteur.id_conducteur = association_vehicule_conducteur.id_conducteur
+[2019-02-18 16:32:42]     SELECT modele, prenom
+                    FROM vehicule
+
+                    LEFT JOIN association_vehicule_conducteur
+                        ON association_vehicule_conducteur.id_vehicule = vehicule.id_vehicule
+
+                    LEFT JOIN conducteur
+                        ON	conducteur.id_conducteur = association_vehicule_conducteur.id_conducteur
+[2019-02-18 16:32:42]     SELECT modele, prenom
+                    FROM conducteur
+
+                    LEFT JOIN association_vehicule_conducteur
+                        ON association_vehicule_conducteur.id_conducteur = conducteur.id_conducteur
+
+                    LEFT JOIN vehicule
+                        ON	vehicule.id_vehicule = association_vehicule_conducteur.id_vehicule
+[2019-02-18 16:32:42]     SELECT vehicule.id_vehicule, marque, modele, couleur, immatriculation
+                    FROM vehicule
+                    INNER JOIN association_vehicule_conducteur
+                        ON association_vehicule_conducteur.id_vehicule = vehicule.id_vehicule
+
+                    INNER JOIN conducteur
+                        ON conducteur.id_conducteur = association_vehicule_conducteur.id_conducteur
+                        
+                    WHERE prenom = 'Philippe'
+                    AND nom = 'Pandre'
+[2019-02-18 16:32:42]     SELECT conducteur.id_conducteur, prenom, nom
+                    FROM conducteur
+                    LEFT JOIN association_vehicule_conducteur
+                        ON association_vehicule_conducteur.id_conducteur = conducteur.id_conducteur
+                    WHERE id_vehicule IS NULL
+[2019-02-18 16:32:42]  SELECT vehicule.id_vehicule, marque, modele, couleur, immatriculation
+                FROM vehicule
+                LEFT JOIN association_vehicule_conducteur
+                    ON association_vehicule_conducteur.id_vehicule = vehicule.id_vehicule
+                WHERE id_conducteur IS NULL
+[2019-02-18 16:32:42] SELECT COUNT(*) as nb FROM association_vehicule_conducteur
+[2019-02-18 16:32:42] SELECT COUNT(*) as nb FROM vehicule
+[2019-02-18 16:32:42] SELECT COUNT(*) as nb FROM conducteur
+[2019-02-18 16:32:41] SELECT * FROM vehicule
+[2019-02-18 16:32:39] SELECT * FROM vehicule WHERE `id_vehicule` = '505'
+[2019-02-18 16:32:39] SELECT * FROM vehicule WHERE `id_vehicule` = '505'
+[2019-02-18 16:32:39] SELECT * FROM vehicule WHERE `id_vehicule` = '505'
+[2019-02-18 16:32:39] SELECT * FROM conducteur WHERE `id_conducteur` = '5'
+[2019-02-18 16:32:39] SELECT * FROM conducteur WHERE `id_conducteur` = '5'
+[2019-02-18 16:32:39] SELECT * FROM conducteur WHERE `id_conducteur` = '5'
+[2019-02-18 16:32:39] SELECT * FROM vehicule WHERE `id_vehicule` = '504'
+[2019-02-18 16:32:39] SELECT * FROM vehicule WHERE `id_vehicule` = '504'
+[2019-02-18 16:32:39] SELECT * FROM vehicule WHERE `id_vehicule` = '504'
+[2019-02-18 16:32:39] SELECT * FROM conducteur WHERE `id_conducteur` = '4'
+[2019-02-18 16:32:39] SELECT * FROM conducteur WHERE `id_conducteur` = '4'
+[2019-02-18 16:32:39] SELECT * FROM conducteur WHERE `id_conducteur` = '4'
+[2019-02-18 16:32:39] SELECT * FROM vehicule WHERE `id_vehicule` = '503'
+[2019-02-18 16:32:39] SELECT * FROM vehicule WHERE `id_vehicule` = '503'
+[2019-02-18 16:32:39] SELECT * FROM vehicule WHERE `id_vehicule` = '503'
+[2019-02-18 16:32:39] SELECT * FROM conducteur WHERE `id_conducteur` = '3'
+[2019-02-18 16:32:39] SELECT * FROM conducteur WHERE `id_conducteur` = '3'
+[2019-02-18 16:32:39] SELECT * FROM conducteur WHERE `id_conducteur` = '3'
+[2019-02-18 16:32:39] SELECT * FROM vehicule WHERE `id_vehicule` = '502'
+[2019-02-18 16:32:39] SELECT * FROM vehicule WHERE `id_vehicule` = '502'
+[2019-02-18 16:32:39] SELECT * FROM vehicule WHERE `id_vehicule` = '502'
+[2019-02-18 16:32:39] SELECT * FROM conducteur WHERE `id_conducteur` = '2'
+[2019-02-18 16:32:39] SELECT * FROM conducteur WHERE `id_conducteur` = '2'
+[2019-02-18 16:32:39] SELECT * FROM conducteur WHERE `id_conducteur` = '2'
+[2019-02-18 16:32:39] SELECT * FROM vehicule WHERE `id_vehicule` = '501'
+[2019-02-18 16:32:39] SELECT * FROM vehicule WHERE `id_vehicule` = '501'
+[2019-02-18 16:32:39] SELECT * FROM vehicule WHERE `id_vehicule` = '501'
+[2019-02-18 16:32:39] SELECT * FROM conducteur WHERE `id_conducteur` = '1'
+[2019-02-18 16:32:39] SELECT * FROM conducteur WHERE `id_conducteur` = '1'
+[2019-02-18 16:32:39] SELECT * FROM conducteur WHERE `id_conducteur` = '1'
+[2019-02-18 16:32:39] SELECT * FROM vehicule
+[2019-02-18 16:32:39] SELECT * FROM conducteur
+[2019-02-18 16:32:39] SELECT * FROM association_vehicule_conducteur
+[2019-02-18 16:32:35] SELECT * FROM conducteur
+[2019-02-18 16:32:26] SELECT * FROM user WHERE `email` = 'dede@gmail.com'
+[2019-02-18 16:31:52] SELECT * FROM user WHERE `email` = 'dede@gmail.com'
+[2019-02-18 16:31:17] SELECT * FROM user WHERE `email` = 'dede@gmail.com'
+[2019-02-18 16:30:39] SELECT * FROM user WHERE `email` = 'dede@gmail.com'
+[2019-02-18 16:30:09] INSERT INTO user (`email`, `pseudo`, `password_hash`) VALUES ('dede@gmail.com', 'dede', 'y$HPMhfU8ew7cOU.KeSkNgK.gdW4bP9H0bFcslX/fhV6y6jE2oWI5.i') 
+[2019-02-18 16:30:09] SELECT * FROM user WHERE `email` = 'dede@gmail.com'
 [2019-02-11 15:54:50]     SELECT modele, prenom
                     FROM conducteur
 

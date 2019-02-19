@@ -45,6 +45,7 @@
     <hr>
 
     <button id="conducteurSubmit" type="submit" class="btn btn-primary">Ajouter ce conducteur</button>
+    <a id="conducteurCancelEdit" class="btn btn-danger text-light" style="display:none">Annuler la modification</a>
 </form>
 
 

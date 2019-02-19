@@ -6,15 +6,24 @@ class User extends Db
     protected $id;
     protected $pseudo;
     protected $email;
-    protected $password_hash;
+    protected $password;
     protected $created_at;
 
-    public function __construct(string $pseudo, string $email, $id = null)
-    {
-        $this->
+    const TABLE_NAME = "user";
+
+    public function __construct(string $pseudo, string $email, string $password, $id = null) {
+        
+        $this->setPseudo($pseudo);
+        $this->setEmail($email);
+        // On ne passe par setPassword, qui hashe le mdp, que si on n'a pas d'ID (si on a un nouveau user)
+
+        if ($id !== null) {
+            $this->password = $password;
+        } else {
+        $this->setPassword($password);
+        }
+        $this->setId($id);
     }
-
-
 
     /**
      * Get the value of id
@@ -71,7 +80,7 @@ class User extends Db
      */
     public function setEmail($email)
     {
-        /**Valider l'email
+        /**TODO:Valider l'email
          * 
          */
         $this->email = $email;
@@ -99,5 +108,72 @@ class User extends Db
         $this->created_at = $created_at;
 
         return $this;
+    }
+
+    /**
+     * Get the value of password
+     */
+    public function password()
+    {
+        return $this->password;
+    }
+    /**
+     * Set the value of password
+     *
+     * @return  self
+     */
+    public function setPassword($password)
+    {
+        // TODO: FACULTATIF : valider le mot de passe
+        // (pas trop court, avec des chars speciaux, maj + min ...)
+        // on n'enregistre pas $password dans $this->password directement !
+        // Il faut hasher le mot de passe en utilisant la fonction password_hash()
+        $this->password = password_hash($password, PASSWORD_DEFAULT);
+        return $this;
+    }
+
+    public function save()
+    {
+        $data = [
+            'email' => $this->email(),
+            'pseudo' => $this->pseudo(),
+            'password_hash' => $this->password(),
+        ];
+        $this->setId(Db::dbCreate(self::TABLE_NAME, $data));
+        return $this;
+    }
+
+    public static function findByEmail(string $email)
+    {
+        $data = Db::dbFind(self::TABLE_NAME, [
+            ['email', '=', $email]
+        ]);
+        if (count($data) > 0) $data = $data[0];
+        else return; // throw new Exception('Le user n\'existe pas.');
+
+        $user = new User(
+            $data['pseudo'],
+            $data['email'],
+            $data['password_hash'],
+            intval($data['id'])
+        );
+        return $user;
+    }
+
+    public static function findByCredentials(string $email, string $password)
+    {
+        $data = Db::dbFind(self::TABLE_NAME, [
+            ['email', '=', $email],
+            ['email', '=', password_verify($password, PASSWORD_DEFAULT)]
+        ]);
+        if (count($data) > 0) $data = $data[0];
+        else return; // throw new Exception('Le user n\'existe pas.');
+        $user = new User(
+            $data['pseudo'],
+            $data['email'],
+            $data['password_hash'],
+            intval($data['id'])
+        );
+        return $user;
     }
 }

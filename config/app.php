@@ -19,3 +19,5 @@ const CLASSES_SOURCES = [
     'config',
     'models',
 ];
+
+const ENV = 'dev';
